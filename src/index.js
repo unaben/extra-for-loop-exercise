@@ -102,7 +102,7 @@ for (let i = 0; i < store.products.length; i++) {
   }
 }
 
-console.log('expensiveProducts:', expensiveProducts);
+console.log("expensiveProducts:", expensiveProducts);
 
 // ----- Section -----
 
@@ -178,7 +178,6 @@ for (let i = 0; i < store.products.length; i++) {
 
 console.log("tablets:", tablets);
 
-
 // ----- Section -----
 
 // A list of products of the type "computer"
@@ -202,8 +201,8 @@ let iMac = null;
 for (let i = 0; i < store.products.length; i++) {
   const item = store.products[i];
 
-  if (item.name === "iMac") {   
-    iMac = item
+  if (item.name === "iMac") {
+    iMac = item;
   }
 }
 console.log("iMac: ", iMac);
@@ -216,8 +215,8 @@ let iPhone12 = null;
 for (let i = 0; i < store.products.length; i++) {
   const item = store.products[i];
 
-  if (item.name === "iPhone 12") {   
-    iPhone12 = item
+  if (item.name === "iPhone 12") {
+    iPhone12 = item;
   }
 }
 console.log("iPhone 12: ", iPhone12);
@@ -230,8 +229,8 @@ let iPadMini = null;
 for (let i = 0; i < store.products.length; i++) {
   const item = store.products[i];
 
-  if (item.name === "iPad mini") {   
-    iPadMini = item
+  if (item.name === "iPad mini") {
+    iPadMini = item;
   }
 }
 console.log("iPad Mini: ", iPadMini);
@@ -244,7 +243,7 @@ let totalQuantityOfStock = 0;
 for (let i = 0; i < store.products.length; i++) {
   const item = store.products[i];
 
-  totalQuantityOfStock += item.stock.quantity
+  totalQuantityOfStock += item.stock.quantity;
 }
 
 console.log("totalQuantityOfStock:", totalQuantityOfStock);
@@ -256,9 +255,9 @@ const productTypes = [];
 
 for (let i = 0; i < store.products.length; i++) {
   const item = store.products[i];
-  const type = item.type  
-  productTypes.push(type)
-  // if (item.type) {   
+  const type = item.type;
+  productTypes.push(type);
+  // if (item.type) {
   //   productTypes.push(item)
   // }
 }
@@ -268,16 +267,70 @@ console.log("productTypes: ", productTypes);
 // => ["mobile", "computer", "tablet"]
 
 // An object that represents the most expensive product
-const theMostExpensiveProduct = null;
+let theMostExpensiveProduct = null;
+
+let expensivePriceTracker = 0;
+
+for (let i = 0; i < store.products.length; i++) {
+  const item = store.products[i];
+  const price = item.price;
+  if (expensivePriceTracker < price) {
+    theMostExpensiveProduct = item;
+    expensivePriceTracker = price;
+    console.log("PriceTracker: ",expensivePriceTracker);
+  }
+}
+console.log("TheMostExpensiveProduct: ", theMostExpensiveProduct);
+
 
 // An object that represents the least expensive product
-const theLeastExpensiveProduct = null;
+let theLeastExpensiveProduct = null;
+
+let cheapestItemPriceTracker = 0;
+
+for (let i = 0; i < store.products.length; i++) {
+  const item = store.products[i];
+  const price = item.price;
+  if (cheapestItemPriceTracker > price) {
+    theLeastExpensiveProduct = item;
+    cheapestItemPriceTracker = price;
+    console.log("PriceTracker: ", priceTracker);
+  }
+}
+console.log("TheLeastExpensiveProduct: ", theLeastExpensiveProduct);
 
 // An object that represents the most expensive product
-const theMostStockedProduct = null;
+let theMostStockedProduct = null;
 
+let highestStockTracker = 0;
+
+for (let i = 0; i < store.products.length; i++) {
+  const item = store.products[i];
+  const quantity = item.stock.quantity;
+  console.log("Quantity: ", quantity);
+  if (highestStockTracker < quantity) {
+    theMostStockedProduct = item;
+    highestStockTracker = quantity;
+    console.log("highestStockTracker : ", highestStockTracker );
+  }
+}
+console.log("theMostStockedProduct: ", theMostStockedProduct);
 // An object that represents the least expensive product
-const theLeastStockedProduct = null;
+let theLeastStockedProduct = null;
+
+let leastStockTracker = 0;
+
+for (let i = 0; i < store.products.length; i++) {
+  const item = store.products[i];
+  const quantity = item.stock.quantity;
+  console.log("Quantity: ", quantity);
+  if (leastStockTracker >= quantity) {
+    theLeastStockedProduct = item;
+    leastStockTracker = quantity;
+    console.log("leastStockTracker : ", leastStockTracker );
+  }
+}
+console.log("theLeastStockedProduct: ", theLeastStockedProduct);
 
 // Use the "stores" array in the challenge.js file
 // And do the above again, collecting data from all stores.
